@@ -11,10 +11,19 @@ namespace DielRoller
     /// </summary>
     public class Die
     {
+        ///<summary>
+        ///Constuctor for the die. Calls the Roll() method
+        /// to set the initial value of the die.
+        ///</summary>
+        public Die()
+        {
+            Roll();
+        }
+
         /// <summary>
         /// Current face value of the die/user roll
         /// </summary>
-        public byte FaceValue { get; set; }
+        public byte FaceValue { get; private set; }
 
         /// <summary>
         /// True if the current die value is held
@@ -28,7 +37,7 @@ namespace DielRoller
         public byte Roll()
         {
             // Generate a random number
-            Random random = new Random();
+            Random random = new();
             byte dieRoll = (byte)random.Next(1, 7);
 
             // Set the FaceValue property

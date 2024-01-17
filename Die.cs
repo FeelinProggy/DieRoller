@@ -10,7 +10,17 @@ namespace DielRoller
     /// Represents a single six-sided die (1-6)
     /// </summary>
     public class Die
+
     {
+        // Static field to hold a reference to one Random object
+        // shared by all Die objects
+        private static Random _random;
+
+        static Die()
+        {
+            _random = new Random();
+        }
+
         ///<summary>
         ///Constuctor for the die. Calls the Roll() method
         /// to set the initial value of the die.
@@ -41,8 +51,7 @@ namespace DielRoller
                 return FaceValue;
             }
             // If die is not held, generate a random number
-            Random random = new();
-            byte dieRoll = (byte)random.Next(1, 7);
+            byte dieRoll = (byte)_random.Next(1, 7);
 
             // Set the FaceValue property
             FaceValue = dieRoll;

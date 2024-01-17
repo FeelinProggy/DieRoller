@@ -31,12 +31,16 @@ namespace DielRoller
         public bool IsHeld { get; set; }
 
         /// <summary>
-        /// Rolls the die and returns the new "rolled" value
-        /// to set the <see cref="FaceValue"/> property
+        /// If the die is not currently held, rolls the die and 
+        /// sets the <see cref="FaceValue"/> property to the "rolled" value.
         /// </summary>
         public byte Roll()
         {
-            // Generate a random number
+            if (IsHeld)
+            {
+                return FaceValue;
+            }
+            // If die is not held, generate a random number
             Random random = new();
             byte dieRoll = (byte)random.Next(1, 7);
 
@@ -44,7 +48,7 @@ namespace DielRoller
             FaceValue = dieRoll;
 
 
-            return dieRoll;            
+            return FaceValue;            
         }
     }
 }

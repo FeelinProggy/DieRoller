@@ -28,10 +28,14 @@ namespace DielRoller
         public byte Roll()
         {
             // Generate a random number
+            Random random = new Random();
+            byte dieRoll = (byte)random.Next(1, 7);
+
             // Set the FaceValue property
-            // Return the new value
-            throw new NotImplementedException();
-            
+            FaceValue = dieRoll;
+
+
+            return dieRoll;            
         }
     }
 }
